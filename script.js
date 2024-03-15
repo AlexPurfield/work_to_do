@@ -1,3 +1,3 @@
 var enterButton = 
 document.getElementById("enter");
-var input 
+var input = document.getElementById("userInput");
