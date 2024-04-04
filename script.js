@@ -20,7 +20,7 @@ function createListElement() {
     //create element list item
 
     li.appendChild(document.createTextNode(input.value)); //makes text from input field the list item text 
-}   ul.appendChild(li); //adds list item to unordered list
+   ul.appendChild(li); //adds list item to unordered list
 input.value=""; //reset text input field
 
 // START STRIKETHROUGH
@@ -41,3 +41,29 @@ li.appendChild(deleteBtn);
 deleteBtn.addEventListener("click",deleteListItem);
 
 //END ADD/DELETE BUTTON
+
+// ADD CLASS DELETE (Display:none)
+function deleteListItem() {
+    li.classList.add("delete")
+}
+//END ADD CLASS DELETE
+}
+
+function addListAfterClick() {
+    if (inputLength() > 0) {
+        //makes sure that an empty input field doesn't create a list item
+        createListElement();
+    }
+}
+
+function addListAfterKeypress(event) {
+    if (inputLength() > 0 && event.which ===13)
+    {//this now looks to see if you hit "enter"/"return" 
+    //the 13 is the enter key's keycode, this could also be display by event.keyCode===13
+        createListElement();
+    }
+}
+
+enterButton.addEventListener("click", addListAfterClick);
+
+input.addEventListener("keypress", addListAfterKeypress);
